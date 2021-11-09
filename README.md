@@ -3,7 +3,7 @@
 | --- | --- | 
 
 Exam project for _Serverless Computing for IoT_ of the course year 2020/2021. Master's degree in Computer Science. 
-___
+
 ## Indice
 - [**Architecture**](#architecture)
 - [**Prerequisites**](#prerequisites)
