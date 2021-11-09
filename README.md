@@ -4,6 +4,12 @@
 
 Exam project for _Serverless Computing for IoT_ of the course year 2020/2021. Master's degree in Computer Science. 
 ___
+## Indice
+- [**Architecture**](#architecture)
+- [**Prerequisites**](#prerequisites)
+- [**Installation**](#installation)
+- [**Demo**](#demo)
+___
 
 The idea of this project is to have a system of Livescore about Football matches. In detail, the system permits to check the results of Football matches in real time and, when one of them changes, a Telegram message is sent to the user with the updated result. In the message there are info about the minute of the gol event and the updated result. In addiction to this, a Telegram message is sent when the Football match is over. 
 
