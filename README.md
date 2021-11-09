@@ -22,5 +22,53 @@ The architecture of the project is composed by several components. A Python scri
 
 ## Installation
 
+First of all, you need to get a subscription with [__Sport Data API__](https://sportdataapi.com/) and to choose the leagues of which you would get scores in order to fill in the fields _headers_ and _paramsAPI_ in the producerLiveScore script.
 
+```python
+headers = { 
+  "apikey": "xxxxxxxxxxxxxxxxxxxx"}
+
+paramsAPI = (
+   ("season_id","xxx"),
+   ("date_from","xxxx-xx-xx"),
+   ("live","true")
+)
+```
+
+After, you have to create a Telegram bot with [__BotFather__](https://t.me/BotFather) in order to fill in the fields in the consumerLiveScore script on Nuclio:
+
+```python
+my_token="xxxxxxxxxxxxxxxxxx"
+my_telegram_ID="xxxxxx" 
+```
+
+Start the docker container that contains the instance of RabbitMQ server:
+
+```sh
+docker run -p 9000:15672  -p 1883:1883 -p 5672:5672  cyrilix/rabbitmq-mqtt 
+```
+
+Start the docker container of Nuclio so that you can deploy the consumerLiveScore function:
+
+```sh
+docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp nuclio/dashboard:stable-amd64
+```
+
+Connect to __localhost:8070__ and, after creating a new project, create a new function importing the _consumerLiveScore.yaml_ file (_Remember to update my_token and my_telegram_ID as said before_).
+
+Then, install the python libraries useful to run the last script:
+
+```bash
+pip install pika
+pip install requests
+pip install jsonpickle
+```
+
+The last step is to run on another terminal the _producerLiveScore_ script. So, open a terminal from the root of project and run the script:
+
+```bash
+python3 producerLiveScore.py
+```
+
+## Demo
 
