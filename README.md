@@ -57,7 +57,8 @@ docker run -p 9000:15672  -p 1883:1883 -p 5672:5672  cyrilix/rabbitmq-mqtt
 Start the docker container of Nuclio so that you can deploy the consumerLiveScore function:
 
 ```sh
-docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp nuclio/dashboard:stable-amd64
+docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp --name nuclio-dashboard quay.io/nuclio/dashboard:stable-amd64
+
 ```
 
 Connect to __localhost:8070__ and, after creating a new project, create a new function importing the _consumerLiveScore.yaml_ file (_Remember to update my_token and my_telegram_ID as said before_).
