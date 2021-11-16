@@ -15,7 +15,7 @@ channel.exchange_declare(exchange='livescore', exchange_type='direct')
 print("...eseguito")
 
 headers = { 
-  "apikey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+  "apikey": "50db53c0-25f4-11ec-911e-cf7d4f57f34d"}
 
 paramsAPI = (
    ("season_id","392"),
@@ -45,7 +45,7 @@ while True:
     
     jsondata = json.loads(response.text)
     message = create_message(jsondata)
-    if message is None: 
+    if json.loads(message) is None: 
         break
     channel.basic_publish(exchange='livescore', routing_key='livescore_queue', body=message)
 
